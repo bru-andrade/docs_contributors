@@ -7,18 +7,23 @@ def add_line_to_files(path, extension, line_to_add):
                 file_path = os.path.join(root, file)
                 with open(file_path, 'r') as f:
                     lines = f.readlines()
+                    f.close()
 
                 with open(file_path, 'a') as f:
                     f.write(f"\n{line_to_add}")
+                    f.close()
 
                 print(f"Added line to {file}")
 
-path = 'src/content/docs/en/pages/main-menu/reference/build/edge-application/domains'
+path = '/Users/bruna.andrade/VSCode/docs/src/content/docs/pt-br/pages/peering'
 extension = '.mdx'
 line_to_add = """
+
 ---
 
-**Contributors** <ContributorList>Contributor</ContributorList>
+import ContributorList from '~/components/ContributorList.astro'
+
+**Contribuidores** <ContributorList>Contributor</ContributorList>
 """
 
 add_line_to_files(path, extension, line_to_add)
